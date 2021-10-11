@@ -2799,3 +2799,13 @@ AS $$
 $$;
 
 
+CREATE TABLE udacitydata.controlTable (
+
+countBeforeInserting bigint,
+toInsert bigint,
+realValue bigint,
+endTime timestamp DEFAULT NOW(),
+countAfterInserting bigint
+
+
+);

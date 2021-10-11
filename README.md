@@ -1,11 +1,21 @@
 
+
 ## Scope the Project and Gather Data
 
-### The goal of this project is to use the covidf19 database for analytics purposes, using different technologies.
+### The goal of this project is to use the SARS-COV2 AKA COVID19 database for analytics purposes, using different technologies.
+
+#### What you'll be able to do:
+- Children that have passed away due to COVID-19
+-   Dailycases
+-   People that passed away having different comorbidities
+-   Cases by state
+-   Defunctions by men/women
+- Correlations between different dimensions
+ 
 
 #### Data Source: 
-- datos.gob.mx (Mexican data-bank)
-- datos.nl.gob.mx (Nuevo Leon, data-bank)
+- datos.gob.mx (Mexican data-bank), 10 M 800K rows.
+- datos.nl.gob.mx (Nuevo Leon, data-bank) 
 
 #### Usage of data:
 - Analytics
@@ -34,11 +44,9 @@
 	- Entidades (Catalog)
 
 - Tables/Views for Analytics:
-	- Children that have passed away due to COVID-19
-	- Dailycases
-	- People that passed away having different comorbidities
-	- Cases by state
-	- Defunctions by men/women
+	- DailyReview, Dailycases
+	- CasesByState, Cases by state
+	- PercentageBasedOnGenre, Defunctions by men/women
  
 Star Schema has been chosen due to the nature of the data, being the coredata table the center of it.
 All of them include PRIMARY KEYs and coredata table include this keys as FOREIGN KEYS
@@ -65,10 +73,17 @@ All of them include PRIMARY KEYs and coredata table include this keys as FOREIGN
 ## Include a description of how you would approach the problem differently under the following scenarios:
    -   If the data was increased by 100x.
 	   - The same way with the difference that I'll include a non-clustered index on the table, deactivating when we upload data and enable it again when data is complete.
+	   - Using Apache Spark and PySpark to deal with a really large amount of data
    -   If the pipelines were run on a daily basis by 7am.
-	   - This is prepared to work on a daily basis, I'll include an email notification.
+	   - Airflow can suit here as well since we can schedule tasks and see it on a graphical way and cofigure it to send notification emails.
    -   If the database needed to be accessed by 100+ people.
-	   - Manage permissions GRANT permission when data is there and REVOKE permission to tables if the data is still loading in order to avoid BLOCKING TABLES.
+	   - Migrate to AWS, to prevent a potential risk to all the users when loading new data.
+
+#### RESULTS
+
+![enter image description here](https://i.imgur.com/y6pWTWX.jpg)
+
+
 
 ## FAQ
 

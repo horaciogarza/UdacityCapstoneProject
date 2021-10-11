@@ -74,3 +74,8 @@ tipodepaciente_table_insert = ("""INSERT INTO udacitydata.tipodepaciente(
 	id, descripcion)
 	VALUES (%s, %s);""")
 
+control_table_insert = ("""INSERT INTO udacitydata.controlTable(
+	countBeforeInserting, toInsert, realValue, countAfterInserting)
+	VALUES (%s, %s, %s, %s);""")
+
+count_of_coretable = ("""SELECT COUNT(*) FROM udacitydata.coredata""")
